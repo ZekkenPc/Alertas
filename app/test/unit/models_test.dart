@@ -55,13 +55,12 @@ void main() {
       expect(SeverityX.parse('P3'), Severity.p3);
     });
 
-    // RIESGO DOCUMENTADO: un valor desconocido se degrada en silencio a P3
-    // (el más bajo). Esta prueba fija el comportamiento actual; si se decide
-    // corregirlo (p. ej. tratar lo desconocido como P1), se actualiza aquí.
-    test('valor desconocido o vacío se interpreta como P3', () {
-      expect(SeverityX.parse('P0'), Severity.p3);
-      expect(SeverityX.parse(''), Severity.p3);
-      expect(SeverityX.parse('p1'), Severity.p3); // distingue mayúsculas
+    // Decisión de diseño: ante una severidad desconocida se asume la más
+    // alta (P1) para no minimizar una alerta que no se pudo clasificar.
+    test('valor desconocido o vacío se interpreta como P1 (fail-safe)', () {
+      expect(SeverityX.parse('P0'), Severity.p1);
+      expect(SeverityX.parse(''), Severity.p1);
+      expect(SeverityX.parse('p1'), Severity.p1);
     });
   });
 
