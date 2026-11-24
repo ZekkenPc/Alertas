@@ -23,7 +23,7 @@ extension SeverityX on Severity {
 
   static Severity parse(String value) => Severity.values.firstWhere(
         (s) => s.code == value,
-        orElse: () => Severity.p3,
+        orElse: () => Severity.p1,
       );
 }
 
