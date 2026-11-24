@@ -1,0 +1,11 @@
+# Dependencias y compilados (el zip original pesaba más de 1 GB por esto)
+node_modules/
+app/build/
+app/.dart_tool/
+app/.idea/
+app/coverage/
+app/android/.gradle/
+app/android/.kotlin/
+app/android/local.properties
+*.iml
+.flutter-plugins-dependencies
